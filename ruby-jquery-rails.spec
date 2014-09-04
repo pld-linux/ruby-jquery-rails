@@ -2,7 +2,7 @@
 Summary:	jQuery and the jQuery-ujs driver for your Rails 3+ application
 Name:		ruby-%{pkgname}
 Version:	3.1.1
-Release:	2
+Release:	3
 License:	Ruby-alike
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -13,8 +13,10 @@ BuildRequires:	rpmbuild(macros) >= 1.656
 %if %(locale -a | grep -q '^en_US$'; echo $?)
 BuildRequires:	glibc-localedb-all
 %endif
+Requires:	ruby-rack-ssl >= 1.3.2
 Requires:	ruby-railties
 Requires:	ruby-thor
+Conflicts:	ruby-rack-ssl >= 1.4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
