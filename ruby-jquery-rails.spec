@@ -2,7 +2,7 @@
 Summary:	jQuery and the jQuery-ujs driver for your Rails 3+ application
 Name:		ruby-%{pkgname}
 Version:	3.1.1
-Release:	3
+Release:	4
 License:	Ruby-alike
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -69,10 +69,10 @@ rm ri/cache.ri
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_rubylibdir}/rails,%{ruby_specdir},%{ruby_ridir},%{ruby_rdocdir}}
+install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir}/rails,%{ruby_specdir},%{ruby_ridir},%{ruby_rdocdir}}
 
-cp -a lib/* $RPM_BUILD_ROOT%{ruby_rubylibdir}
-%{__mv} $RPM_BUILD_ROOT%{ruby_rubylibdir}/{,rails}/generators
+cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+%{__mv} $RPM_BUILD_ROOT%{ruby_vendorlibdir}/{,rails}/generators
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{pkgname}-%{version}
 cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
@@ -83,11 +83,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.md README.md
-%{ruby_rubylibdir}/jquery
-%{ruby_rubylibdir}/jquery-rails.rb
-%dir %{ruby_rubylibdir}/rails/generators/jquery
-%dir %{ruby_rubylibdir}/rails/generators/jquery/install
-%{ruby_rubylibdir}/rails/generators/jquery/install/install_generator.rb
+%{ruby_vendorlibdir}/jquery
+%{ruby_vendorlibdir}/jquery-rails.rb
+%dir %{ruby_vendorlibdir}/rails/generators/jquery
+%dir %{ruby_vendorlibdir}/rails/generators/jquery/install
+%{ruby_vendorlibdir}/rails/generators/jquery/install/install_generator.rb
 %{ruby_specdir}/%{pkgname}-%{version}.gemspec
 
 %files rdoc
